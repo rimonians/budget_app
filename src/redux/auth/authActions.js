@@ -62,7 +62,7 @@ export const authSignoutSuccess = () => {
 
 export const authSignoutFailure = (payload) => {
   return {
-    type: actions.AUTH_SIGNOUT_FAILUTE,
+    type: actions.AUTH_SIGNOUT_FAILURE,
     payload: payload,
   };
 };
