@@ -104,10 +104,10 @@ export const authSignupInitiate = (username, email, password, cb) => {
           displayName: user.displayName,
         })
       );
-      cb(user, "Signup successfull");
+      cb(user, "সাইন আপ সফল হয়েছে");
     } catch (err) {
       dispatch(authSignupFailure(err.message));
-      cb(null, err.message);
+      cb(null, "সাইন আপ করতে সমস্যা হয়েছে");
     }
   };
 };
@@ -129,10 +129,10 @@ export const authSigninInitiate = (email, password, cb) => {
           displayName: user.displayName,
         })
       );
-      cb(user, "Signin successfull");
+      cb(user, "সাইন ইন সফল হয়েছে");
     } catch (err) {
       dispatch(authSigninFailure(err.message));
-      cb(null, err.message);
+      cb(null, "সাইন ইন করতে সমস্যা হয়েছে");
     }
   };
 };
@@ -143,10 +143,10 @@ export const authSignoutInitiate = (cb) => {
     try {
       await signOut(auth);
       dispatch(authSignoutSuccess());
-      cb(200, "OK");
+      cb(200, "সাইন আউট সফল হয়েছে");
     } catch (err) {
       dispatch(authSignoutFailure(err.message));
-      cb(500, err.message);
+      cb(500, "সাইন আউট করতে সমস্যা হয়েছে");
     }
   };
 };

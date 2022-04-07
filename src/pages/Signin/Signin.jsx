@@ -27,45 +27,49 @@ const Signin = () => {
 
   const handleSignin = (e) => {
     e.preventDefault();
-    if (!wasSubmitted) {
-      setWasSubmitted(true);
-      dispatch(
-        authSigninInitiate(email, password, (user, info) => {
-          if (user) {
-            setEmail("");
-            setPassword("");
-            toast.success(info);
-            setTimeout(() => {
-              navigate("/");
-            }, 1000);
-          } else {
-            toast.error(info);
-            setWasSubmitted(false);
-          }
-        })
-      );
+    if (email && password) {
+      if (!wasSubmitted) {
+        setWasSubmitted(true);
+        dispatch(
+          authSigninInitiate(email, password, (user, info) => {
+            if (user) {
+              setEmail("");
+              setPassword("");
+              toast.success(info);
+              setTimeout(() => {
+                navigate("/");
+              }, 1000);
+            } else {
+              toast.error(info);
+              setWasSubmitted(false);
+            }
+          })
+        );
+      }
+    } else {
+      toast.error("অনুগ্রহ করে সবগুলো তথ্য দিন");
     }
   };
 
   return (
     <div>
       <Form onSubmit={handleSignin}>
-        <h3>Signin Form</h3>
-        <Label htmlFor="email">Enter email address</Label>
+        <h3>সাইন ইন ফর্ম</h3>
+        <Label htmlFor="email">ইমেইল এড্রেস দিন</Label>
         <Input
           id="email"
           type="text"
-          placeholder="Enter your email address"
+          placeholder="ইমেইল এড্রেস দিন"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Label htmlFor="password">Enter password</Label>
+        <Label htmlFor="password">পাসওয়ার্ড দিন</Label>
         <Input
           id="password"
           type="password"
-          placeholder="Enter your password"
+          placeholder="পাসওয়ার্ড দিন"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button>Signin</Button>
+        <Button>সাইন ইন করুন</Button>
       </Form>
     </div>
   );

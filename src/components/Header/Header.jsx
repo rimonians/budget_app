@@ -23,7 +23,7 @@ const Header = () => {
       authSignoutInitiate((status, info) => {
         if (status === 200) {
           dispatch(budgetGetSuccess([]));
-          toast.success("Signout successfull");
+          toast.success(info);
         } else {
           toast.error(info);
         }
@@ -36,7 +36,7 @@ const Header = () => {
       <div className={classes.logo}>
         <Link to="/">
           <RiMoneyDollarCircleFill />
-          <span>Budget App</span>
+          <span>বাজেট অ্যাপ</span>
         </Link>
       </div>
       <div className={classes.links}>
@@ -44,21 +44,21 @@ const Header = () => {
           <>
             <Link to="/signin">
               <RiLoginBoxLine />
-              Signin
+              সাইন ইন
             </Link>
             <Link to="/signup">
               <RiAccountPinBoxLine />
-              Signup
+              সাইন আপ
             </Link>
           </>
         ) : (
           <>
             <Link to="/budget">
               <RiMoneyPoundCircleFill />
-              Budget
+              বাজেট
             </Link>
             <button onClick={handleSignout}>
-              <RiLogoutBoxLine /> Signout
+              <RiLogoutBoxLine /> সাইন আউট
             </button>
           </>
         )}

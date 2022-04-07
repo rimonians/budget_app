@@ -13,14 +13,16 @@ const Home = () => {
 
   return (
     <div className={classes.homeContainer}>
-      <h3>Welcome {user.displayName}</h3>
+      <h3 className={classes.greet}>
+        স্বাগতম <span>{user.displayName}</span>
+      </h3>
       <div className={classes.totalContainer}>
-        {loading && <h3>Loading...</h3>}
+        {loading && <h3>লোড হচ্ছে...</h3>}
         {!loading && (
           <>
             <Card
               info={{
-                text: "Total income",
+                text: "সর্বোমোট আয়",
                 totalAmount: totalIncome,
               }}
               icon={<GiReceiveMoney />}
@@ -28,7 +30,7 @@ const Home = () => {
             />
             <Card
               info={{
-                text: "Total expense",
+                text: "সর্বোমোট ব্যয়",
                 totalAmount: totalExpense,
               }}
               icon={<GiPayMoney />}
@@ -36,7 +38,7 @@ const Home = () => {
             />
             <Card
               info={{
-                text: "Total saving",
+                text: "সর্বোমোট সঞ্চয়",
                 totalAmount: totalIncome - totalExpense,
               }}
               icon={<GiTakeMyMoney />}
@@ -46,7 +48,9 @@ const Home = () => {
         )}
       </div>
       <div className={classes.listContainer}>
-        {!loading && Object.keys(budget).length === 0 && <p>Data not found</p>}
+        {!loading && Object.keys(budget).length === 0 && (
+          <p>বাজেট খুঁজে পাওয়া যায়নি</p>
+        )}
         {Object.keys(budget).length > 0 &&
           [...budget]
             .reverse()

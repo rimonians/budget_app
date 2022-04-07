@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className={classes.footer}>
       <p>
-        Copyright <FaRegCopyright /> <Link to="/">Budget App</Link>
+        কপিরাইট <FaRegCopyright /> <Link to="/">বাজেট অ্যাপ</Link>
       </p>
     </div>
   );

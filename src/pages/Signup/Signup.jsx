@@ -27,53 +27,57 @@ const Signup = () => {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    if (!wasSubmitted) {
-      setWasSubmitted(true);
-      dispatch(
-        authSignupInitiate(username, email, password, (user, info) => {
-          if (user) {
-            setUsername("");
-            setEmail("");
-            setPassword("");
-            toast.success(info);
-            setTimeout(() => {
-              navigate("/");
-            }, 1000);
-          } else {
-            toast.error(info);
-            setWasSubmitted(false);
-          }
-        })
-      );
+    if (username && email && password) {
+      if (!wasSubmitted) {
+        setWasSubmitted(true);
+        dispatch(
+          authSignupInitiate(username, email, password, (user, info) => {
+            if (user) {
+              setUsername("");
+              setEmail("");
+              setPassword("");
+              toast.success(info);
+              setTimeout(() => {
+                navigate("/");
+              }, 1000);
+            } else {
+              toast.error(info);
+              setWasSubmitted(false);
+            }
+          })
+        );
+      }
+    } else {
+      toast.error("অনুগ্রহ করে সবগুলো তথ্য দিন");
     }
   };
 
   return (
     <div>
       <Form onSubmit={handleSignup}>
-        <h3>Signup Form</h3>
-        <Label htmlFor="username">Enter username</Label>
+        <h3>সাইন আপ ফর্ম</h3>
+        <Label htmlFor="username">ইউজারনেম দিন</Label>
         <Input
           id="username"
           type="text"
-          placeholder="Enter your username"
+          placeholder="ইউজারনেম দিন"
           onChange={(e) => setUsername(e.target.value)}
         />
-        <Label htmlFor="email">Enter email address</Label>
+        <Label htmlFor="email">ইমেইল এড্রেস দিন</Label>
         <Input
           id="email"
           type="text"
-          placeholder="Enter your email address"
+          placeholder="ইমেইল এড্রেস দিন"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Label htmlFor="password">Enter password</Label>
+        <Label htmlFor="password">পাসওয়ার্ড দিন</Label>
         <Input
           id="password"
           type="password"
-          placeholder="Enter your password"
+          placeholder="পাসওয়ার্ড দিন"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button>Signup</Button>
+        <Button>সাইন আপ করুন</Button>
       </Form>
     </div>
   );

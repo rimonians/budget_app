@@ -40,28 +40,19 @@ export const budgetAdd = async (data, cb) => {
       amount: Number(data.amount),
       createAt: serverTimestamp(),
     });
-    cb(200, "Successfully added on budget");
+    cb(200, "সফলভাবে নতুন বাজেট যোগ করা হয়েছে");
   } catch (err) {
-    cb(500, err.message);
+    cb(500, "নতুন বাজেট যোগ করতে সমস্যা হয়েছে");
   }
 };
-
-// Budget update
-// export const budgetUpdate = async (data, cb) => {
-//   try {
-//     cb(200, "Budget successfully updated");
-//   } catch (err) {
-//     cb(500, err.message);
-//   }
-// };
 
 // Budget delete
 export const budgetDelete = async (id, cb) => {
   try {
     const docRef = doc(db, "budget", id);
     await deleteDoc(docRef);
-    cb(200, "Budget successfully deleted");
+    cb(200, "সফলভাবে বাজেট মুছে ফেলা হয়েছে");
   } catch (err) {
-    cb(500, err.message);
+    cb(500, "বাজেট মুছে ফেলতে সমস্যা হয়েছে");
   }
 };

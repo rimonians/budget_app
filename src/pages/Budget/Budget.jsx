@@ -21,7 +21,7 @@ const Budget = () => {
     if (!wasSubmitted) {
       setWasSubmitted(true);
       if (!source || !amount) {
-        toast.error("Input field can't be empty");
+        toast.error("অনুগ্রহ করে সবগুলো তথ্য দিন");
         setWasSubmitted(false);
       } else {
         budgetAdd({ source, amount, userId, type }, (status, info) => {
@@ -42,30 +42,30 @@ const Budget = () => {
   return (
     <div>
       <Form onSubmit={handleSubmit}>
-        <h3>Add Budget Form</h3>
-        <Label htmlFor="source">Enter budget source</Label>
+        <h3>বাজেট ফর্ম</h3>
+        <Label htmlFor="source">বাজেটের উৎস</Label>
         <Input
           id="source"
           type="text"
-          placeholder="Enter budget source"
+          placeholder="বাজেটের উৎস লিখুন"
           value={source}
           onChange={(e) => setSource(e.target.value)}
         />
-        <Label htmlFor="amount">Enter amount</Label>
+        <Label htmlFor="amount">বাজেটের পরিমাণ</Label>
         <Input
           id="amount"
           type="number"
-          placeholder="Enter budget amount"
+          placeholder="বাজেটের পরিমাণ লিখুন"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
-        <Label htmlFor="type">Enter budget type</Label>
+        <Label htmlFor="type">বাজেটের ধরণ</Label>
         <Select value={type} onChange={(e) => setType(e.target.value)}>
-          <option value="income">Income</option>
-          <option value="expense">Expense</option>
+          <option value="income">আয়</option>
+          <option value="expense">ব্যয়</option>
         </Select>
         <Button style={type === "expense" ? { background: "crimson" } : {}}>
-          Add {type === "expense" ? "Expense" : "Income"}
+          {type === "expense" ? "ব্যয়" : "আয়"} হিসেবে যোগ করুন
         </Button>
       </Form>
     </div>
