@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "../../components/Form/Form";
 import Label from "../../components/Label/Label";
 import Input from "../../components/Input/Input";
@@ -7,6 +7,7 @@ import Button from "../../components/Button/Button";
 import { useSelector } from "react-redux";
 import { budgetAdd } from "../../firebase.config";
 import { toast } from "react-toastify";
+import scrollTop from "../../utils/scrollTop";
 
 const Budget = () => {
   const [source, setSource] = useState("");
@@ -15,6 +16,10 @@ const Budget = () => {
   const [wasSubmitted, setWasSubmitted] = useState(false);
 
   const userId = useSelector((state) => state.auth.user.uid);
+
+  useEffect(() => {
+    scrollTop();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

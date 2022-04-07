@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./Home.module.css";
 import { useSelector } from "react-redux";
 import List from "../../components/List/List";
 import Card from "../../components/Card/Card";
 import { GiReceiveMoney, GiPayMoney, GiTakeMyMoney } from "react-icons/gi";
+import scrollTop from "../../utils/scrollTop";
 
 const Home = () => {
   const authState = useSelector((state) => state.auth);
   const { user } = authState;
   const budgetState = useSelector((state) => state.budget);
   const { loading, budget, totalIncome, totalExpense } = budgetState;
+
+  useEffect(() => {
+    scrollTop();
+  }, []);
 
   return (
     <div className={classes.homeContainer}>

@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { authSigninInitiate } from "../../redux/auth/authActions";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import scrollTop from "../../utils/scrollTop";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -17,6 +18,10 @@ const Signin = () => {
   const { user } = authState;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    scrollTop();
+  }, []);
 
   useEffect(() => {
     if (Object.keys(user).length !== 0) {
