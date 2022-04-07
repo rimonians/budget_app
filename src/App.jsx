@@ -36,7 +36,7 @@ const App = () => {
           <div className={classes.loading}></div>
         </div>
       )}
-      {!loading && !err && (
+      {!loading && (
         <>
           <Layout>
             <Routes>

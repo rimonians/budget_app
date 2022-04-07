@@ -107,7 +107,7 @@ export const authSignupInitiate = (username, email, password, cb) => {
       cb(user, "সাইন আপ সফল হয়েছে");
     } catch (err) {
       dispatch(authSignupFailure(err.message));
-      cb(null, "সাইন আপ করতে সমস্যা হয়েছে");
+      cb(null, err.message);
     }
   };
 };
@@ -132,7 +132,7 @@ export const authSigninInitiate = (email, password, cb) => {
       cb(user, "সাইন ইন সফল হয়েছে");
     } catch (err) {
       dispatch(authSigninFailure(err.message));
-      cb(null, "সাইন ইন করতে সমস্যা হয়েছে");
+      cb(null, err.message);
     }
   };
 };
