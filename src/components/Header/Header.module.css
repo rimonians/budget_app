@@ -1,0 +1,58 @@
+.header {
+  position: sticky;
+  top: 0;
+  height: 60px;
+  padding: 0 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  background: #fff;
+  z-index: 9999;
+}
+.logo a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: dodgerblue;
+}
+.links {
+  display: flex;
+  gap: 1rem;
+}
+.links a,
+.links button {
+  color: dodgerblue;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.links button {
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 3rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .header {
+    padding: 1rem;
+  }
+  .logo a {
+    font-size: 1rem;
+  }
+  .links a,
+  .links button {
+    font-size: 0.9rem;
+    gap: 0.2rem;
+  }
+}

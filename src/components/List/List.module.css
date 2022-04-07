@@ -1,0 +1,46 @@
+.list {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.income {
+  color: dodgerblue;
+  box-shadow: 0 0 3px rgba(30, 143, 255, 0.5);
+}
+.expense {
+  color: crimson;
+  box-shadow: 0 0 3px rgba(220, 20, 60, 0.5);
+}
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.list h3 {
+  text-transform: capitalize;
+}
+.list p {
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.action {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.action button {
+  height: 35px;
+  width: 35px;
+  border: none;
+  background: none;
+  color: #222;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
