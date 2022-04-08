@@ -9,7 +9,7 @@ import {
   RiMoneyPoundCircleFill,
 } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
-import { authSignoutInitiate } from "../../redux/auth/authActions";
+import { signout } from "../../firebase/firebase.auth";
 import { budgetGetSuccess } from "../../redux/budget/budgetActions";
 import { toast } from "react-toastify";
 
@@ -19,16 +19,14 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const handleSignout = () => {
-    dispatch(
-      authSignoutInitiate((status, info) => {
-        if (status === 200) {
-          dispatch(budgetGetSuccess([]));
-          toast.success(info);
-        } else {
-          toast.error(info);
-        }
-      })
-    );
+    signout((status, info) => {
+      if (status) {
+        dispatch(budgetGetSuccess([]));
+        toast.success(info);
+      } else {
+        toast.error(info);
+      }
+    });
   };
 
   return (

@@ -3,8 +3,8 @@ import Form from "../../components/Form/Form";
 import Label from "../../components/Label/Label";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import { useSelector, useDispatch } from "react-redux";
-import { authSignupInitiate } from "../../redux/auth/authActions";
+import { useSelector } from "react-redux";
+import { signup } from "../../firebase/firebase.auth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import scrollTop from "../../utils/scrollTop";
@@ -17,7 +17,6 @@ const Signup = () => {
 
   const authState = useSelector((state) => state.auth);
   const { user } = authState;
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,22 +34,20 @@ const Signup = () => {
     if (username && email && password) {
       if (!wasSubmitted) {
         setWasSubmitted(true);
-        dispatch(
-          authSignupInitiate(username, email, password, (user, info) => {
-            if (user) {
-              setUsername("");
-              setEmail("");
-              setPassword("");
-              toast.success(info);
-              setTimeout(() => {
-                navigate("/");
-              }, 1000);
-            } else {
-              toast.error(info);
-              setWasSubmitted(false);
-            }
-          })
-        );
+        signup(username, email, password, (user, info) => {
+          if (user) {
+            setUsername("");
+            setEmail("");
+            setPassword("");
+            toast.success(info);
+            setTimeout(() => {
+              navigate("/");
+            }, 2000);
+          } else {
+            toast.error(info);
+            setWasSubmitted(false);
+          }
+        });
       }
     } else {
       toast.error("অনুগ্রহ করে সবগুলো তথ্য দিন");

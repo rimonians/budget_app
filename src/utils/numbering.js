@@ -12,7 +12,7 @@ const numbers = {
 };
 
 const numbering = (input) => {
-  input = input === String ? input : input.toString();
+  input = input === String ? input : input.toLocaleString();
   const output = [];
   for (let i = 0; i < input.length; ++i) {
     if (numbers.hasOwnProperty(input[i])) {

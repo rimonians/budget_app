@@ -1,5 +1,5 @@
 import * as actions from "./budgetTypes";
-import { colRef } from "../../firebase.config";
+import { colRef } from "../../firebase/firebase.budget";
 import { onSnapshot, query, where, orderBy } from "firebase/firestore";
 
 export const budgetGetRequest = () => {
@@ -21,6 +21,7 @@ export const budgetGetFailure = () => {
   };
 };
 
+// Budget get initiate functionality
 export const budgetGetInitiate = (uid) => {
   return (dispatch) => {
     const q = query(colRef, where("userId", "==", uid), orderBy("createAt"));

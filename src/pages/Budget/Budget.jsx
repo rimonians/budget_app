@@ -5,7 +5,7 @@ import Input from "../../components/Input/Input";
 import Select from "../../components/Select/Select";
 import Button from "../../components/Button/Button";
 import { useSelector } from "react-redux";
-import { budgetAdd } from "../../firebase.config";
+import { budgetAdd } from "../../firebase/firebase.budget";
 import { toast } from "react-toastify";
 import scrollTop from "../../utils/scrollTop";
 

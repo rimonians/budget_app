@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./List.module.css";
 import { RiDeleteBin2Fill } from "react-icons/ri";
-import { budgetDelete } from "../../firebase.config";
+import { budgetDelete } from "../../firebase/firebase.budget";
 import { toast } from "react-toastify";
 import numbering from "../../utils/numbering";
 

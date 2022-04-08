@@ -16,7 +16,7 @@ import { budgetGetInitiate } from "./redux/budget/budgetActions";
 
 const App = () => {
   const authState = useSelector((state) => state.auth);
-  const { loading, user, err } = authState;
+  const { loading, user } = authState;
   const dispatch = useDispatch();
 
   useEffect(() => {
