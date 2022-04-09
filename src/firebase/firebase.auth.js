@@ -4,7 +4,6 @@ import {
   updateProfile,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged,
 } from "firebase/auth";
 
 // Signup functionality
